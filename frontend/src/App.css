@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'Gilroy-Medium';
+    src: url(./Font/Gilroy-Medium.ttf);
+  }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    background: #fafafa;
+    font-family: 'Gilroy-Medium';
+    color: #212529;
+}
+
+.container{
+    width: 1200px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+
+
+
+

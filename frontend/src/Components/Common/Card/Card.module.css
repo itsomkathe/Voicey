@@ -1,0 +1,46 @@
+.cardWrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+.card {
+    width: 35rem;
+    max-width: 90%;
+    min-height: 300px;
+    border-radius: 2rem;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 
+    8px 8px 16px 0 rgba(0, 0, 0, 0.25),
+    -4px -4px 12px 0 rgba(255, 255, 255, 0.3);
+}
+
+.card * {
+    background: transparent;
+    font-weight: 500;
+}
+
+.headerWrapper {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.headerWrapper h1 {
+    font-size: 1.8rem;
+    margin-left: 0.5rem;
+    font-weight: 600;
+}
+
+.headerWrapper img {
+    height: 4rem;
+    width: 4rem;
+}
+
+.headerWrapper img svg{
+    height: 100%;
+    width: 100%;
+}

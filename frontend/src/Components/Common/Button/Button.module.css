@@ -1,0 +1,29 @@
+#button{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    border: none;
+    background-color: #00a5f8;
+    width: 12rem;
+    padding: 0.4rem;
+    border-radius: 5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 
+    12px 12px 16px 0 rgba(255, 255, 255, 0.3) inset,
+    -8px -8px 12px 0 rgba(0, 67, 105, 0.25) inset;
+}
+
+#button span{
+    color: white;
+    font-size: 1rem;
+    background: transparent;
+}
+
+#button img{
+    height: 1.5rem;
+    width: 1.5rem;
+}

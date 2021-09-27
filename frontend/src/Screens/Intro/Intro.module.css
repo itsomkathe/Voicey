@@ -1,0 +1,19 @@
+.text{
+    font-size: 1.2rem;
+}
+
+.card p{
+    font-size: 1.1rem;
+    letter-spacing: 0.001rem;
+    color: #495057;
+}
+
+.bottom span{
+    color: #495057;
+    margin-right: 0.5rem;
+}
+
+.bottom a{
+    color: #00a5f8;
+    text-decoration: none;
+}
