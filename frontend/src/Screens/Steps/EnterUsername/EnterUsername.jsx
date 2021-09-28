@@ -6,7 +6,7 @@ import Card from "../../../Components/Common/Card/Card";
 export default function EnterUsername({onclick}){
     return(
         <>
-            <Card title = "enter username" icon = "key.svg">
+            <Card title = "enter username" icon = "glasses.svg">
                 <Button onClick = {onclick} text = "Continue"></Button>
             </Card>
         </>
