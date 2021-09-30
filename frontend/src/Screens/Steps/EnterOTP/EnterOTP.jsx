@@ -12,6 +12,7 @@ export default function EnterOTP({onClick}){
                     <div className = {style.OTPWrapper}>
                         <OTPInput/>
                     </div>
+                    <span className = {style.message}>enter the code that we have just sent you</span>
                     <Button onClick = {onClick} text = "Continue"></Button>
                 </Card>
             </div>

@@ -15,3 +15,10 @@
 .OTPWrapper{
     width: 60%;
 }
+
+.message{
+    color: #495057;
+    font-weight: 600;
+    width: 70%;
+    margin: auto;
+}

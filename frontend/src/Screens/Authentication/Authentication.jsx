@@ -13,7 +13,6 @@ const authSteps = {
 
 export default function Authentication(){
     const[step, setStep] = useState(1);
-    console.log(step)
     const Comp = authSteps[step];
     const nextStep = ()=>{
         setStep(step+1);
