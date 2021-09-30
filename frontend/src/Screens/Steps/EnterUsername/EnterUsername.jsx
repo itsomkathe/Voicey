@@ -12,7 +12,7 @@ export default function EnterUsername({onClick}){
                     <div className = {style.inputWrapper}>
                         <Input placeholder = "@username"/>
                     </div>
-                    <span className = {style.warning}>invalid input</span>
+                    {/* <span className = {style.warning}>invalid input</span> */}
                     <Button onClick = {onClick} text = "Continue"></Button>
                 </Card>
             </div>
