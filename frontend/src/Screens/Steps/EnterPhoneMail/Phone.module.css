@@ -1,0 +1,26 @@
+.inputWrapper{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.inputWrapper img{
+    height: 3rem;
+    width: 3.5rem;
+    margin-right: 0.5rem;
+}
+
+.warning{
+    color: rgb(255, 125, 125);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.terms{
+    color: #495057;
+    width: 70%;
+    margin: 1rem auto;
+}

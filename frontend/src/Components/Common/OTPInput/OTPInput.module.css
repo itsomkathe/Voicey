@@ -1,0 +1,20 @@
+.inputWrapper{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+.inputWrapper input{
+    outline: none;
+    border: none;
+    background-color: #f8f9fa;
+    height: 3.5rem;
+    width: 3.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    box-shadow: inset .2rem .2rem .5rem var(--greyLight-2), 
+    inset -.2rem -.2rem .5rem var(--white);
+}

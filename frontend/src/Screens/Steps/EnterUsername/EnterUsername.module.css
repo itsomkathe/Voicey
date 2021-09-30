@@ -1,0 +1,19 @@
+.cardWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.inputWrapper{
+    width: 80%;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+.warning{
+    font-weight: bold;
+    color: rgb(255, 107, 107);
+    margin-bottom: 1rem;
+}

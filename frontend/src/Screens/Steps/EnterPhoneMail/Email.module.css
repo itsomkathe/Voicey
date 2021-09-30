@@ -1,0 +1,18 @@
+.terms{
+    color: #495057;
+    width: 70%;
+    margin: 1rem auto;
+}
+
+.inputWrapper{
+    width: 80%;
+    display: flex;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.warning{
+    font-weight: bold;
+    color: rgb(255, 107, 107);
+    margin-bottom: 1rem;
+}

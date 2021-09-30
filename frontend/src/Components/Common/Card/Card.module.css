@@ -1,16 +1,14 @@
-.cardWrapper{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5rem;
-}
+
 .card {
     width: 35rem;
     max-width: 90%;
     min-height: 300px;
     border-radius: 2rem;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     box-shadow: 
     8px 8px 16px 0 rgba(0, 0, 0, 0.25),

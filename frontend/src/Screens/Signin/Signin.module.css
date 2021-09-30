@@ -1,29 +1,12 @@
-:root {
-    --white: #FFFFFF;
-    --greyLight-1: #E4EBF5;
-    --greyLight-2: #c8d0e7;
-    --greyLight-3: #bec8e4;
-    --greyDark: #9baacf;
+.cardWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
 }
 
-.input {
-    border: none;
-    outline: none;
-    width: 70%;
-    height: 3rem;
-    padding: 1rem;
-    border-radius: 15px;
-    background-color: #f8f9fa;
-    color: #343a40;
-    font-weight: 600;
-    margin: 1rem 1rem;
-    letter-spacing: 0.05rem;
-    box-shadow: inset .2rem .2rem .5rem var(--greyLight-2), 
-    inset -.2rem -.2rem .5rem var(--white);
-    background: none;
-    font-family: inherit;
-}
-
-::placeholder {
-    color: #8f8f8f;
+.inputWrapper{
+    width: 80%;
+    margin: auto;
 }

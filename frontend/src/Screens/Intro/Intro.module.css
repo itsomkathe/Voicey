@@ -1,5 +1,14 @@
 .text{
     font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.cardWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
 }
 
 .card p{
@@ -7,7 +16,9 @@
     letter-spacing: 0.001rem;
     color: #495057;
 }
-
+.bottom{
+    margin-top: 1rem;
+}
 .bottom span{
     color: #495057;
     margin-right: 0.5rem;
