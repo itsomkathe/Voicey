@@ -12,12 +12,12 @@ export default function Phone({ onClick }) {
         if(number){
             if(number.toString().length === 10){
                 setAllow(true);
-            }else if(number.toString().length > 10){
+            }else{
                 setAllow(false);
             }
         }
     }, [number])
-    
+
     return (
         <>
             <Card title="enter phone number" icon="phone.svg">
