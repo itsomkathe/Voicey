@@ -30,6 +30,7 @@ export default function Phone({ onClick }) {
                         pattern="[0-9]"
                         placeholder="10 digit phone number"
                         type="number"
+                        value={number}
                     />
                 </div>
                 {/*<span className={style.warning}>invalid input</span>*/}
