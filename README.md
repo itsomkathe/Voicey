@@ -5,7 +5,7 @@
 <h4 align = "center">voicey is an application to make voice chat rooms inspired by <a href = "https://www.joinclubhouse.com/" target="_blank">Clubhouse</a></h4>
 
 <div align = "center">
-    <h4 align = "center"> <a href="https://github.com/itsomkathe/Voicey/commits/master"><img src="https://img.shields.io/github/last-commit/itsomkathe/Voicey.svg?style=flat-square&color=green"/></a> <a href="https://github.com/itsomkathe/Voicey/commits/master"><img src="https://img.shields.io/github/commit-activity/y/itsomkathe/Voicey.svg?style=flat-square"/></a> <a href="https://github.com/Servatom/notefy/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square&color=blue"/></a> <a href="https://github.com/Servatom/notefy/compare"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square"/></a>
+    <h4 align = "center"> <a href="https://github.com/itsomkathe/Voicey/commits/master"><img src="https://img.shields.io/github/last-commit/itsomkathe/Voicey.svg?style=flat-square&color=green"/></a> <a href="https://github.com/itsomkathe/Voicey/commits/master"><img src="https://img.shields.io/github/commit-activity/y/itsomkathe/Voicey.svg?style=flat-square"/></a> <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square&color=blue"/></a> <a href="https://github.com/Servatom/notefy/compare"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square"/></a>
     </h4>
 <div>
 
