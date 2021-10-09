@@ -1,5 +1,6 @@
-const otpService = require("../services/otpService");
-const hashingService = require("../services/hashingService");
+const otpService = require('../services/otpService');
+const hashingService = require('../services/hashingService');
+const userService = require('../services/userService');
 
 class AuthController {
     async sendOTP(req, res) {
@@ -25,7 +26,7 @@ class AuthController {
             return res.staus(400).json({message: "All fields are required"});
         }
         const [hashedOTP, expireAt] = hash.split("#");
-        if(Date.now() > expireAt){
+        if(Date.now() > parseInt(expireAt)){
             return res.staus(400).json({message: "OTP Expired"});
         }
 
@@ -33,6 +34,22 @@ class AuthController {
         const isValid = await otpService.verify(hashedOTP, data);
         if(!isValid){
             return res.staus(400).json({message: "OTP Expired"});
+        }
+
+        let user;
+        try{
+            user = await userService.findUser({phone: number});
+            if(user){
+                return res.status(400).json({message: "user with given number already exists"})
+            }
+            try{
+                await userService.createUser({phone: number})
+            }catch(err){
+                console.log(err);
+                return res.status(500).json({message: "Internal server error, could not create account"})
+            }
+        }catch(err){
+            console.log(err);
         }
     }
 }
