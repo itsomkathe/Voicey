@@ -12,9 +12,14 @@ export default function Signin(){
                 <Card title = "sign in" icon = "unlock.svg">
                     <div className = {style.inputWrapper}>
                         <Input placeholder = "username"/>
-                        <Input type = "password" placeholder = "password"/>
                     </div>
-                    <Button text = "Sign In"/>
+                    <div className = {style.inputWrapper}>
+                        <Input placeholder = "password"/>
+                    </div>
+                    <div className = {style.buttonWrapper}>
+                        <Button text = "Sign In"/>
+                    </div>
+                    <span className={style.message}>want to test this app? <span className = {style.clickHere}>Click Here</span></span>
                 </Card>
             </div>
             

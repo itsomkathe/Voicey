@@ -9,4 +9,19 @@
 .inputWrapper{
     width: 80%;
     margin: auto;
+    margin-bottom: 1.5rem;
+}
+
+.buttonWrapper{
+    margin-bottom: 1rem;
+}
+
+.message{
+    color: #495057;
+    margin-bottom: 1rem;
+}
+
+.clickHere{
+    color: #0092db;
+    cursor: pointer;
 }
