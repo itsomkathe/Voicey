@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Navbar from "./Components/Common/Navbar/Navbar";
 import Intro from "./Screens/Intro/Intro";
 import Signin from "./Screens/Signin/Signin";
-import Authentication from "./Screens/Authentication/Authentication";
+import Verification from "./Screens/Verification/Verification";
 import Customize from "./Screens/Customize/Customize";
 
 const isAuth = false;
@@ -17,15 +17,15 @@ function App() {
                     <GuestRoute path="/" exact={true}>
                         <Intro />
                     </GuestRoute>
-                    <GuestRoute path="/authentication">
-                        <Authentication />
+                    <GuestRoute path="/verification">
+                        <Verification />
                     </GuestRoute>
                     <GuestRoute path="/signin">
                         <Signin />
                     </GuestRoute>
-                    <SemiProtectedRoute path = "/customize">
+                    <AuthenticationRoute path = "/customize">
                         <Customize/>
-                    </SemiProtectedRoute>
+                    </AuthenticationRoute>
                     <ProtectedRoute path = "/rooms">
                         
                     </ProtectedRoute>
@@ -55,7 +55,7 @@ const GuestRoute = ({ children, ...rest }) => {
     );
 };
 
-const SemiProtectedRoute = ({ children, ...rest }) => {
+const AuthenticationRoute = ({ children, ...rest }) => {
     return (
         <Route
             {...rest}
