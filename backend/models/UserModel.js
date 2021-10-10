@@ -3,16 +3,26 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     username: {
-        type: String
+        type: String,
+        required:true
+    },
+    password: {
+        type: String,
+        required:true
     },
     name:{
         type: String
     },
     phone: {
-        type: String
+        type: String,
+        required:true
     },
     username: {
         type: String
+    },
+    isComplete: {
+        type: Boolean,
+        default: false
     }
 },{
     timestamps : true
