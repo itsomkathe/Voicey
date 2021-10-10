@@ -1,12 +1,10 @@
 import React, {useState} from "react";
-import EnterUsername from '../Steps/EnterUsername/EnterUsername';
-import EnterPassword from '../Steps/EnterPassword/EnterPassword';
-import EnterName from '../Steps/EnterName/EnterName';
+import EnterOTP from "../Steps/EnterOTP/EnterOTP";
+import EnterPhoneMail from "../Steps/EnterPhoneMail/EnterPhoneMail";
 
 const Steps = {
-    1: EnterUsername,
-    2: EnterPassword,
-    3: EnterName
+    1: EnterPhoneMail,
+    2: EnterOTP,
 }
 
 export default function Authentication(){
