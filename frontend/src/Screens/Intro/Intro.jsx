@@ -7,7 +7,7 @@ import style from "./Intro.module.css";
 export default function Intro() {
     const hist = useHistory();
     const redirectRegister = ()=>{
-        hist.push("/authentication")
+        hist.push("/verification");
     }
     return <>
             <div className={style.cardWrapper}>
