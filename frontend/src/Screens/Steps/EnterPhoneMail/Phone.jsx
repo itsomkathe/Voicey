@@ -3,10 +3,12 @@ import Button from "../../../Components/Common/Button/Button";
 import Card from "../../../Components/Common/Card/Card";
 import Input from "../../../Components/Common/Input/Input";
 import style from "./Phone.module.css";
+import { sendOTP } from "../../../Reqests/axios";
 
 export default function Phone({ onClick }) {
     const[number, setNumber] = useState(null);
     const[allow, setAllow] = useState(false);
+    const[error, setError] = useState(false);
 
     useEffect(()=>{
         if(number){
@@ -16,7 +18,17 @@ export default function Phone({ onClick }) {
                 setAllow(false);
             }
         }
-    }, [number])
+    }, [number]);
+
+    async function send(){
+        try{
+            // eslint-disable-next-line no-unused-vars
+            const res = await sendOTP({number: `+91${number}`});
+            onClick();
+        }catch(err){
+            setError(true);
+        }
+    }
 
     return (
         <>
@@ -33,8 +45,10 @@ export default function Phone({ onClick }) {
                         value={number}
                     />
                 </div>
-                {/*<span className={style.warning}>invalid input</span>*/}
-                <Button disabled = {!allow} onClick={onClick} text="Continue" />
+                {
+                    error ? <span className={style.warning}>could not send OTP</span> : null
+                }
+                <Button disabled = {!allow} onClick={send} text="Continue" />
                 <p className={style.terms}>
                     by entering your phone number you are agreeing to our terms
                     of sevice and privacy policy
