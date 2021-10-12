@@ -5,6 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGO_URL = process.env.MONGO_URL;
 const router = require('./routes');
+const cors = require('cors');
 
 mongoose.connect(MONGO_URL, {
     useNewUrlParser: true,
@@ -20,6 +21,9 @@ mongoose.connection.on('error', (err) => {
 });
 
 app.use(express.json());
+app.use(cors({
+    origin: ['http://localhost:3000']
+}));
 app.use(router);
 app.get('/',(req,res,next)=>{
     res.send('Welcome to voicey');

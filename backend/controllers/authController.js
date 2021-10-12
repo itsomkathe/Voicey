@@ -13,8 +13,8 @@ class AuthController {
         const hash = await hashingService.hashOTP(data);
 
         try {
-            await otpService.sendAsText(number, otp);
-            res.json({ hash: `${hash}#${expireAt}`, number: number });
+            //await otpService.sendAsText(number, otp);
+            res.json({ hash: `${hash}#${expireAt}`, number: number, otp: otp });
         } catch (err) {
             return res.status(500).json({ error: err });
         }
