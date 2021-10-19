@@ -47,18 +47,18 @@ class AuthController {
             return res.status(500).json({message: "Internal server error"});
         }
 
-        //const {accessToken, refreshToken} = tokenService.createToken({id: user._id});
+        const {accessToken, refreshToken} = tokenService.createToken({id: user._id});
         const authToken = tokenService.createAuthToken({phone: number});
         res.cookie('authtoken', authToken, {
             maxAge: 1000*60*60,
             httpOnly: true
         });
         res.json({message: "Cookie Sent"})
-        /*  res.cookie('refreshtoken', refreshToken, {
+        res.cookie('refreshtoken', refreshToken, {
             maxAge: 1000*60*60*24*30,
             httpOnly: true
         });
-        res.json({accessToken}) */
+        res.json({accessToken});
     }
 }
 
