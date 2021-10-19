@@ -4,11 +4,14 @@ import Card from "../../../Components/Common/Card/Card";
 import Input from "../../../Components/Common/Input/Input";
 import style from "./Phone.module.css";
 import { sendOTP } from "../../../Reqests/axios";
+import { useDispatch } from "react-redux";
+import { setOTP } from "../../../Store/AuthSlice";
 
 export default function Phone({ onClick }) {
     const[number, setNumber] = useState(null);
     const[allow, setAllow] = useState(false);
     const[error, setError] = useState(false);
+    const dispatch = useDispatch();
 
     useEffect(()=>{
         if(number){
@@ -23,7 +26,8 @@ export default function Phone({ onClick }) {
     async function send(){
         try{
             // eslint-disable-next-line no-unused-vars
-            const res = await sendOTP({number: `+91${number}`});
+            const { data }= await sendOTP({number: `+91${number}`});
+            dispatch(setOTP({phone:data.number, hash:data.hash}));
             onClick();
         }catch(err){
             setError(true);

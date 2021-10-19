@@ -20,15 +20,15 @@ function App() {
                     <GuestRoute path="/verification">
                         <Verification />
                     </GuestRoute>
-                    <GuestRoute path="/signin">
-                        <Signin />
-                    </GuestRoute>
                     <AuthenticationRoute path = "/customize">
                         <Customize/>
                     </AuthenticationRoute>
                     <ProtectedRoute path = "/rooms">
                         
                     </ProtectedRoute>
+                    <GuestRoute path="/signin">
+                        <Signin />
+                    </GuestRoute>
                 </Switch>
             </BrowserRouter>
         </>
