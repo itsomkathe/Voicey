@@ -12,12 +12,12 @@ class TokenService{
         return {accessToken , refreshToken};
     }
 
-    createAuthToken(payload){
+    createVerificationToken(payload){
         const JWT_AUTH_SECRET = process.env.JWT_ACCESS_SECRET;
-        const authToken = jwt.sign(payload, JWT_AUTH_SECRET, {
-            expiresIn: '24h'
+        const verificationToken = jwt.sign(payload, JWT_AUTH_SECRET, {
+            expiresIn: '1h'
         });
-        return authToken;
+        return verificationToken;
     }
 }
 
