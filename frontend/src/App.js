@@ -5,8 +5,10 @@ import Intro from "./Screens/Intro/Intro";
 import Signin from "./Screens/Signin/Signin";
 import Verification from "./Screens/Verification/Verification";
 import Customize from "./Screens/Customize/Customize";
+import Authentication from "./Screens/Authentication/Authentication";
 
 const isAuth = false;
+const isVerified = true;
 
 function App() {
     return (
@@ -15,7 +17,7 @@ function App() {
                 <Navbar />
                 <Switch>
                     <GuestRoute path="/" exact={true}>
-                        <Intro />
+                        <Intro/>
                     </GuestRoute>
                     <GuestRoute path="/verification">
                         <Verification />
@@ -23,8 +25,11 @@ function App() {
                     <AuthenticationRoute path = "/customize">
                         <Customize/>
                     </AuthenticationRoute>
+                    <AuthenticationRoute path = "/authentication">
+                        <Authentication/>
+                    </AuthenticationRoute>
                     <ProtectedRoute path = "/rooms">
-                        
+
                     </ProtectedRoute>
                     <GuestRoute path="/signin">
                         <Signin />
@@ -60,7 +65,7 @@ const AuthenticationRoute = ({ children, ...rest }) => {
         <Route
             {...rest}
             render={({ location }) => {
-                return !isAuth ? (
+                return !isVerified ? (
                     <Redirect
                         to={{
                             pathname: "/",
