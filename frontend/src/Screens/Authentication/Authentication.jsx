@@ -1,8 +1,7 @@
 import React, {useState} from "react";
-import EnterUsername from '../Steps/EnterUsername/EnterUsername';
-import EnterPassword from '../Steps/EnterPassword/EnterPassword';
-import EnterName from '../Steps/EnterName/EnterName';
-
+import EnterUsername from "../Steps/EnterUsername/EnterUsername";
+import EnterPassword from "../Steps/EnterPassword/EnterPassword";
+import EnterName from "../Steps/EnterName/EnterName";
 const Steps = {
     1: EnterUsername,
     2: EnterPassword,
