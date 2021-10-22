@@ -7,18 +7,24 @@ import Input from "../../../Components/Common/Input/Input";
 import { useHistory } from "react-router-dom";
 import { verifyOTP } from "../../../Reqests/axios";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setVerify } from "../../../Store/VerifySlice";
+
 
 export default function EnterOTP({onClick}){
     const [OTP, setOTP] = useState(null);
     const [error, setError] = useState(null);
     const hist = useHistory();
-    const { phone, hash } = useSelector((state)=>{return state.auth.otp});
+    const dispatch = useDispatch();
+
+    const { phone, hash } = useSelector((state)=>{return state.verify.otp});
     const verify = async ()=>{
         try{
             const res = await verifyOTP({phone, hash, otp:OTP});
             if(res.data.error){
                 setError(res.data.error);
             }else{
+                await dispatch(setVerify(true));
                 hist.push("/authentication");
             }
         }catch(err){

@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import auth from './AuthSlice';
+import verify from './VerifySlice';
 
 export const store = configureStore({
   reducer: {
-      auth
+      verify
   },
-})
+});

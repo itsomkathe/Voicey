@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    isAuth: false,
+    isVerified: false,
     user: null,
     otp: {
       phone:null,
@@ -9,12 +9,12 @@ const initialState = {
     }
 };
 
-export const authSlice = createSlice({
-    name: "auth",
+export const verifySlice = createSlice({
+    name: "verify",
     initialState,
     reducers: {
-      setAuth: (state, action) => {
-        
+      setVerify: (state, action)=>{
+        state.isVerified = action.payload;
       },
       setOTP: (state, action) => {
         const {hash, phone} = action.payload;
@@ -24,6 +24,6 @@ export const authSlice = createSlice({
     },
 });
 
-export const { setOTP, setAuth } = authSlice.actions;
+export const { setOTP, setVerify } = verifySlice.actions;
 
-export default authSlice.reducer;
+export default verifySlice.reducer;

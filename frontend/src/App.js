@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Navbar from "./Components/Common/Navbar/Navbar";
 import Intro from "./Screens/Intro/Intro";
 import Signin from "./Screens/Signin/Signin";
@@ -8,7 +9,6 @@ import Customize from "./Screens/Customize/Customize";
 import Authentication from "./Screens/Authentication/Authentication";
 
 const isAuth = false;
-const isVerified = true;
 
 function App() {
     return (
@@ -61,6 +61,7 @@ const GuestRoute = ({ children, ...rest }) => {
 };
 
 const AuthenticationRoute = ({ children, ...rest }) => {
+    const isVerified = useSelector((state)=>{return state.verify.isVerified});
     return (
         <Route
             {...rest}

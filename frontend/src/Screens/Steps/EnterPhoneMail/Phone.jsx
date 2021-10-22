@@ -5,7 +5,7 @@ import Input from "../../../Components/Common/Input/Input";
 import style from "./Phone.module.css";
 import { sendOTP } from "../../../Reqests/axios";
 import { useDispatch } from "react-redux";
-import { setOTP } from "../../../Store/AuthSlice";
+import { setOTP } from "../../../Store/VerifySlice";
 
 export default function Phone({ onClick }) {
     const[number, setNumber] = useState(null);
