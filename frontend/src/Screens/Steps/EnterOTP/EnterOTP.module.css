@@ -22,3 +22,9 @@
     width: 70%;
     margin: auto;
 }
+
+.warning{
+    color: rgb(255, 125, 125);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
