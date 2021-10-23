@@ -7,15 +7,13 @@ import Input from "../../../Components/Common/Input/Input";
 export default function EnterPassword({onClick}){
     return(
         <>
-            <div className={style.cardWrapper}>
                 <Card title = "enter password" icon = "lockkey.svg">
                     <div className={style.inputWrapper}>
                         <Input placeholder = "set password" type = "password"/>
                     </div>
-                    <span className = {style.warning}>invalid input</span>
+                    {/*<span className = {style.warning}>invalid input</span>*/}
                     <Button onClick = {onClick} text = "Continue"></Button>
                 </Card>
-            </div>
         </>
     )
 }

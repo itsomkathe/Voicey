@@ -7,7 +7,6 @@ import Input from "../../../Components/Common/Input/Input";
 export default function EnterUsername({onClick}){
     return(
         <>
-            <div className={style.cardWrapper}>
                 <Card title = "enter username" icon = "glasses.svg">
                     <div className = {style.inputWrapper}>
                         <Input placeholder = "@username"/>
@@ -15,7 +14,6 @@ export default function EnterUsername({onClick}){
                     {/* <span className = {style.warning}>invalid input</span> */}
                     <Button onClick = {onClick} text = "Continue"></Button>
                 </Card>
-            </div>
         </>
     )
 }
