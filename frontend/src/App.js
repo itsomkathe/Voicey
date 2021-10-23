@@ -17,7 +17,7 @@ function App() {
                 <Navbar />
                 <Switch>
                     <GuestRoute path="/" exact={true}>
-                        <Intro/>
+                        <Authentication/>
                     </GuestRoute>
                     <GuestRoute path="/verification">
                         <Verification />
