@@ -1,21 +1,59 @@
-import React from "react";
-import style from './EnterUsername.module.css'
+import React, { useState, useEffect } from "react";
+import style from "./EnterUsername.module.css";
 import Button from "../../../Components/Common/Button/Button";
 import Card from "../../../Components/Common/Card/Card";
 import Input from "../../../Components/Common/Input/Input";
+import { setGlobalUsername } from "../../../Store/AuthSlice";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
-export default function EnterUsername({onClick}){
-    return(
+
+export default function EnterUsername({ onClick }) {
+    const [username, setUsername] = useState(null);
+    const [allow, setAllow] = useState(false);
+    const dispatch = useDispatch();
+    const globalUsername = useSelector((state)=>{return state.auth.username});
+
+    useEffect(()=>{
+        if(globalUsername){
+            setUsername(globalUsername);
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+    
+    useEffect(()=>{
+        if(username){
+            if(username.length >= 3){
+                setAllow(true);
+            }else{
+                setAllow(false);
+            }
+        }else{
+            setAllow(false);
+        }
+    }, [username]);
+
+    async function next(){
+        await dispatch(setGlobalUsername(username));
+        onClick();
+    }
+    return (
         <>
-            <div className={style.cardWrapper}>
-                <Card title = "enter username" icon = "glasses.svg">
-                    <div className = {style.inputWrapper}>
-                        <Input placeholder = "@username"/>
-                    </div>
-                    {/* <span className = {style.warning}>invalid input</span> */}
-                    <Button onClick = {onClick} text = "Continue"></Button>
-                </Card>
-            </div>
+            <Card title="enter username" icon="glasses.svg">
+                <div className={style.inputWrapper}>
+                    <Input
+                        onchange={(e) => {
+                            setUsername(e.target.value);
+                        }}
+                        placeholder="@username"
+                        type = "text"
+                        value = {username}
+                    />
+                </div>
+                {/* <span className = {style.warning}>invalid input</span> */}
+                <span className = {style.message}>username should consist at least 3 characters</span>
+                <Button disabled = {!allow} onClick={next} text="Continue"></Button>
+            </Card>
         </>
-    )
+    );
 }

@@ -1,0 +1,36 @@
+.cardWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.backButton{
+    height: 3rem;
+    width: 3rem;
+    border: none;
+    border-radius: 0.5rem;
+    margin-bottom: 20px;
+    cursor: pointer;
+    box-shadow: 
+    inset 0 0 15px rgba(55, 84, 170,0),
+    inset 0 0 20px rgba(255, 255, 255, 0.459),
+    7px 7px 15px rgba(55, 84, 170,.15),
+    -7px -7px 20px rgba(255, 255, 255,1),
+    inset 0px 0px 4px rgba(255, 255, 255,.2);
+}
+
+.backButton img{
+    background: transparent;
+    height: 50%;
+    width: 50%;
+}
+
+.backButton:active{
+    box-shadow: 
+    inset 7px 7px 15px rgba(15, 22, 43, 0.137),
+    inset -7px -7px 20px rgba(255, 255, 255,1),
+      0px 0px 4px rgba(255, 255, 255,.2);
+}
+
