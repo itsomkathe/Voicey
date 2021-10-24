@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Input.module.css";
 
-export default function Input({ type, placeholder, onchange, pattern }) {
+export default function Input({ value, type, placeholder, onchange, pattern }) {
     return (
         <>
             <input
@@ -10,6 +10,7 @@ export default function Input({ type, placeholder, onchange, pattern }) {
                 type={type}
                 className={style.input}
                 pattern = {pattern}
+                value = {value ? value : ''}
             ></input>
         </>
     );
