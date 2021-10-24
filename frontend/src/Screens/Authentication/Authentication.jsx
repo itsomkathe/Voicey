@@ -27,7 +27,7 @@ export default function Authentication(){
                                     <img src="/Resources/Icons/back.svg" alt = "icon"></img>
                                 </button>: null
                 }
-                <Comp back = {stepBack} id = {style.card} onClick = {nextStep}/>
+                <Comp id = {style.card} onClick = {nextStep}/>
             </div>
         </>
     )
