@@ -10,7 +10,6 @@ export default function Email({ onClick }) {
 
     useEffect(() => {
         if (email) {
-            console.log(regex.test(email))
             if (regex.test(email)) {
                 setAllow(true);
             } else {
@@ -36,7 +35,7 @@ export default function Email({ onClick }) {
                 {/* <span className = {style.warning}>invalid input</span> */}
                 <Button disabled = {!allow} onClick={onClick} text="Continue" />
                 <p className={style.terms}>
-                    by entering your phone number you are agreeing to our terms
+                    by entering your email you are agreeing to our terms
                     of sevice and privacy policy
                 </p>
             </Card>
