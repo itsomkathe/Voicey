@@ -34,11 +34,6 @@
 }
 
 .headerWrapper img {
-    height: 4rem;
-    width: 4rem;
-}
-
-.headerWrapper img svg{
-    height: 100%;
-    width: 100%;
+    height: 3rem;
+    width: 3rem;
 }

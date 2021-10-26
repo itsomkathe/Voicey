@@ -39,7 +39,7 @@ export default function EnterUsername({ onClick }) {
     }
     return (
         <>
-            <Card title="enter username" icon="glasses.svg">
+            <Card title="enter username" icon="sunglasses.png">
                 <div className={style.inputWrapper}>
                     <Input
                         onchange={(e) => {

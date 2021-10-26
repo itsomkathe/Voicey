@@ -34,7 +34,7 @@ export default function EnterOTP({onClick}){
     return(
         <>
             <div className={style.cardWrapper}>
-                <Card title = "enter OTP" icon = "key.svg">
+                <Card title = "enter OTP" icon = "key.png">
                     <div className = {style.OTPWrapper}>
                         <Input 
                             onchange={(e) => {

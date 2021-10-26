@@ -38,7 +38,7 @@ export default function Phone({ onClick }) {
 
     return (
         <>
-            <Card title="enter phone number" icon="phone.svg">
+            <Card title="enter phone number" icon="phone.png">
                 <div className={style.inputWrapper}>
                     <img src="/Resources/Icons/india.svg" alt="india" />
                     <Input

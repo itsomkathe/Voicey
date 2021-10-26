@@ -21,7 +21,7 @@ export default function Email({ onClick }) {
 
     return (
         <>
-            <Card title="enter email" icon="email.svg">
+            <Card title="enter email" icon="email.png">
                 <div className={style.inputWrapper}>
                     <Input
                         onchange={(e) => {

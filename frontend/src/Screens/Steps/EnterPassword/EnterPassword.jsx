@@ -37,7 +37,7 @@ export default function EnterPassword({ onClick }) {
     }
     return (
         <>
-            <Card title="enter password" icon="lockkey.svg">
+            <Card title="enter password" icon="lockkey.png">
                 <div className={style.inputWrapper}>
                     <Input
                         onchange={(e) => {

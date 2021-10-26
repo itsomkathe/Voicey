@@ -1,0 +1,12 @@
+.message{
+    color: #495057;
+    font-weight: 600;
+    width: 70%;
+    margin: auto;
+}
+
+.message a{
+    color: #00a5f8;
+    font-weight: 600;
+    text-decoration: none;
+}
