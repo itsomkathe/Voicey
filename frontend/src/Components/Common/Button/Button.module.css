@@ -9,7 +9,7 @@
 }
 
 #buttonGreen {
-    background-color: #00ff9d;
+    background-color: #02ce80;
     box-shadow: -6px -6px 14px rgba(255, 255, 255, 0.7),
         -6px -6px 10px rgba(255, 255, 255, 0.5),
         6px 6px 8px rgba(255, 255, 255, 0.075), 6px 6px 10px rgba(0, 0, 0, 0.15),
@@ -37,10 +37,24 @@
         inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001,
         inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001;
 }
+#buttonWhite {
+    background-color: rgb(243, 243, 243);
+    box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+        7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001,
+        inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001,
+        inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001;
+}
 #buttonDisabled span {
     color: #919ba5;
     font-size: 1rem;
     background: transparent;
+}
+
+#buttonWhite span {
+    color: #00a5f8;
+    font-size: 1rem;
+    background: transparent;
+    font-weight: 600;
 }
 
 #buttonDisabled img {
@@ -59,4 +73,5 @@
     align-items: center;
     justify-content: center;
     margin: auto;
+    height: 2.3rem;
 }

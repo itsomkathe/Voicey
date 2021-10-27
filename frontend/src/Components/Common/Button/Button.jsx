@@ -1,7 +1,12 @@
 import React from "react";
 import style from "./Button.module.css";
-export default function Button({ text, onClick, disabled }) {
+export default function Button({ text, onClick, disabled, color, icon }) {
     let id = style.buttonBlue;
+    if(color === "GREEN"){
+        id = style.buttonGreen;
+    }else if(color === "WHITE"){
+        id = style.buttonWhite;
+    }
     if(disabled){
         id = style.buttonDisabled;
     }
@@ -14,7 +19,7 @@ export default function Button({ text, onClick, disabled }) {
                 id = {id}
             >
                 <span>{text}</span>
-                <img src="/Resources/Icons/right-arrow.svg" alt="icon"></img>
+                {icon ? <img src="/Resources/Icons/right-arrow.svg" alt="icon"></img> : null}
             </button>
         </>
     );
