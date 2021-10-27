@@ -1,8 +1,49 @@
+.picWrapper{
+    height: 7rem;
+    width: 7rem;
+    border-radius: 1.5rem;
+    border: 0.15rem solid #00a5f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.picWrapper img{
+    height: 7rem;
+    width: 7rem;
+    object-fit: cover;
+}
+.buttonWrapper{
+    display: flex;
+    width: 90%;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.fileInput{
+    display: none;
+}
+#generate{
+    color: #495057;
+    cursor: pointer;
+    font-weight: 600;
+    opacity: 80%;
+}
+.uploadText{
+    color: #009fee;
+    font-weight: 600;
+    cursor: pointer;
+}
 .message{
     color: #495057;
     font-weight: 600;
     width: 70%;
     margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .message a{
