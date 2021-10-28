@@ -9,7 +9,7 @@ export default function AddPhoto() {
     const [image, setImage] = useState(null);
     const [didMount, setDidMount] = useState(false);
     const [picID, setPicID] = useState(1);
-    
+
     const globalName = "Om";
     const inputRef = useRef();
     useEffect(() => {
@@ -43,52 +43,57 @@ export default function AddPhoto() {
     };
 
     const newPicID = () => {
-        setPicID((picID%5) + 1);
+        if(image){
+            setImage(null);
+        }
+        setPicID((picID % 5) + 1);
     };
 
     return (
         <>
-            <Card
-                title={`alright ${globalName}, add a photo`}
-                icon="camera.png"
-            >
-                <div className={style.picWrapper}>
-                    {image ? (
-                        <img src={image} alt="pic"></img>
-                    ) : (
-                        <img
-                            src={`/Resources/Avatars/${picID}.jpg`}
-                            alt="pic"
-                        ></img>
-                    )}
-                </div>
+            <div className={style.cardWrapper}>
+                <Card
+                    title={`alright ${globalName}, add a photo`}
+                    icon="camera.png"
+                >
+                    <div className={style.picWrapper}>
+                        {image ? (
+                            <img src={image} alt="pic"></img>
+                        ) : (
+                            <img
+                                src={`/Resources/Avatars/${picID}.jpg`}
+                                alt="pic"
+                            ></img>
+                        )}
+                    </div>
 
-                <span onClick={newPicID} id={style.generate}>
-                    Generate an avatar
-                </span>
+                    <span onClick={newPicID} id={style.generate}>
+                        Generate an avatar
+                    </span>
 
-                <div className={style.buttonWrapper}>
-                    <Button
-                        text="Upload"
-                        onClick={handleUploadClick}
-                        disabled={false}
-                        color="WHITE"
-                    />
-                    <Button text="Save Picture" icon={true} />
-                </div>
+                    <div className={style.buttonWrapper}>
+                        <Button
+                            text="Upload"
+                            onClick={handleUploadClick}
+                            disabled={false}
+                            color="WHITE"
+                        />
+                        <Button text="Save Picture" icon={true} />
+                    </div>
 
-                <input
-                    type="file"
-                    className={style.fileInput}
-                    ref={inputRef}
-                    accept="image/*"
-                    onChange={displayImage}
-                ></input>
+                    <input
+                        type="file"
+                        className={style.fileInput}
+                        ref={inputRef}
+                        accept="image/*"
+                        onChange={displayImage}
+                    ></input>
 
-                <span className={style.message}>
-                    you can do this step later, <Link>Skip</Link>
-                </span>
-            </Card>
+                    <span className={style.message}>
+                        you can do this step later, <Link>Skip</Link>
+                    </span>
+                </Card>
+            </div>
         </>
     );
 }
