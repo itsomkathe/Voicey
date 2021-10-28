@@ -7,33 +7,34 @@ import { setGlobalUsername } from "../../../Store/AuthSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
-
 export default function EnterUsername({ onClick }) {
     const [username, setUsername] = useState(null);
     const [allow, setAllow] = useState(false);
     const dispatch = useDispatch();
-    const globalUsername = useSelector((state)=>{return state.auth.username});
+    const globalUsername = useSelector((state) => {
+        return state.auth.username;
+    });
 
-    useEffect(()=>{
-        if(globalUsername){
+    useEffect(() => {
+        if (globalUsername) {
             setUsername(globalUsername);
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    
-    useEffect(()=>{
-        if(username){
-            if(username.length >= 3){
+
+    useEffect(() => {
+        if (username) {
+            if (username.length >= 3) {
                 setAllow(true);
-            }else{
+            } else {
                 setAllow(false);
             }
-        }else{
+        } else {
             setAllow(false);
         }
     }, [username]);
 
-    async function next(){
+    async function next() {
         await dispatch(setGlobalUsername(username));
         onClick();
     }
@@ -46,13 +47,20 @@ export default function EnterUsername({ onClick }) {
                             setUsername(e.target.value);
                         }}
                         placeholder="@username"
-                        type = "text"
-                        value = {username}
+                        type="text"
+                        value={username}
                     />
                 </div>
                 {/* <span className = {style.warning}>invalid input</span> */}
-                <span className = {style.message}>username should consist at least 3 characters</span>
-                <Button disabled = {!allow} onClick={next} text="Continue"></Button>
+                <span className={style.message}>
+                    username should consist at least 3 characters
+                </span>
+                <Button
+                    icon={true}
+                    disabled={!allow}
+                    onClick={next}
+                    text="Continue"
+                ></Button>
             </Card>
         </>
     );

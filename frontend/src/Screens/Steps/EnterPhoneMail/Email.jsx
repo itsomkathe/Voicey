@@ -33,7 +33,7 @@ export default function Email({ onClick }) {
                     />
                 </div>
                 {/* <span className = {style.warning}>invalid input</span> */}
-                <Button disabled = {!allow} onClick={onClick} text="Continue" />
+                <Button icon = {true} disabled = {!allow} onClick={onClick} text="Continue" />
                 <p className={style.terms}>
                     by entering your email you are agreeing to our terms
                     of sevice and privacy policy

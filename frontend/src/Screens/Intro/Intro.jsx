@@ -16,7 +16,7 @@ export default function Intro() {
                         <p className = {style.text}>
                         make voice rooms, join them, connect with people. Make voice rooms, join them, connect with people. Make voice rooms, join them, connect with people.
                         </p>
-                        <Button onClick = {redirectRegister} text = "Create Account"/>
+                        <Button icon = {true} onClick = {redirectRegister} text = "Create Account"/>
                         <div className = {style.bottom}>
                             <span>already have an account?</span>
                             <Link to = "/signin">

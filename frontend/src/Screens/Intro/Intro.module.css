@@ -14,6 +14,7 @@
 .card p{
     font-size: 1.1rem;
     letter-spacing: 0.001rem;
+    font-weight: 600;
     color: #495057;
 }
 .bottom{
@@ -22,6 +23,7 @@
 .bottom span{
     color: #495057;
     margin-right: 0.5rem;
+    font-weight: 600;
 }
 
 .bottom a{

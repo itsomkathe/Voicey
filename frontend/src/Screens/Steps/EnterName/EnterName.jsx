@@ -39,6 +39,7 @@ export default function EnterName({ onClick }) {
                     onClick={next}
                     text="Continue"
                     value = {name}
+                    icon = {true}
                 ></Button>
             </Card>
         </>

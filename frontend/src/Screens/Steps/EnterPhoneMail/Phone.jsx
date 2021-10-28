@@ -54,7 +54,7 @@ export default function Phone({ onClick }) {
                 {
                     error ? <span className={style.warning}>could not send OTP</span> : null
                 }
-                <Button disabled = {!allow} onClick={send} text="Continue" />
+                <Button icon = {true}  disabled = {!allow} onClick={send} text="Continue" />
                 <p className={style.terms}>
                     by entering your phone number you are agreeing to our terms
                     of sevice and privacy policy

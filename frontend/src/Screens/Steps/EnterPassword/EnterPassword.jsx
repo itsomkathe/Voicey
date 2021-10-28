@@ -10,28 +10,30 @@ export default function EnterPassword({ onClick }) {
     const [password, setPassword] = useState(null);
     const [allow, setAllow] = useState(false);
     const dispatch = useDispatch();
-    const globalPassword = useSelector((state)=>{return state.auth.password});
+    const globalPassword = useSelector((state) => {
+        return state.auth.password;
+    });
 
-    useEffect(()=>{
-        if(globalPassword){
+    useEffect(() => {
+        if (globalPassword) {
             setPassword(globalPassword);
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    useEffect(()=>{
-        if(password){
-            if(password.length >= 6){
+    useEffect(() => {
+        if (password) {
+            if (password.length >= 6) {
                 setAllow(true);
-            }else{
+            } else {
                 setAllow(false);
             }
-        }else{
+        } else {
             setAllow(false);
         }
     }, [password]);
 
-    async function next(){
+    async function next() {
         await dispatch(setGlobalPassword(password));
         onClick();
     }
@@ -45,12 +47,19 @@ export default function EnterPassword({ onClick }) {
                         }}
                         placeholder="set password"
                         type="password"
-                        value = {password}
+                        value={password}
                     />
                 </div>
                 {/*<span className = {style.warning}>invalid input</span>*/}
-                <span className = {style.message}>password should consist at least 6 characters</span>
-                <Button disabled = {!allow} onClick={next} text="Continue"></Button>
+                <span className={style.message}>
+                    password should consist at least 6 characters
+                </span>
+                <Button
+                    icon={true}
+                    disabled={!allow}
+                    onClick={next}
+                    text="Continue"
+                ></Button>
             </Card>
         </>
     );
