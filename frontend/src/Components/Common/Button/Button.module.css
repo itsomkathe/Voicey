@@ -44,6 +44,12 @@
         inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001,
         inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001;
 }
+#buttonWhite:active{
+    box-shadow: 
+    inset 7px 7px 15px rgba(15, 22, 43, 0.137),
+    inset -7px -7px 20px rgba(255, 255, 255,1),
+      0px 0px 4px rgba(255, 255, 255,.2);
+}
 #buttonDisabled span {
     color: #919ba5;
     font-size: 1rem;
