@@ -5,8 +5,8 @@ import Navbar from "./Components/Common/Navbar/Navbar";
 import Intro from "./Screens/Intro/Intro";
 import Signin from "./Screens/Signin/Signin";
 import Verification from "./Screens/Verification/Verification";
-import Customize from "./Screens/Customize/Customize";
 import Authentication from "./Screens/Authentication/Authentication";
+import AddPhoto from "./Screens/Steps/AddPhoto/AddPhoto";
 
 const isAuth = false;
 
@@ -22,9 +22,6 @@ function App() {
                     <GuestRoute path="/verification">
                         <Verification />
                     </GuestRoute>
-                    <AuthenticationRoute path = "/customize">
-                        <Customize/>
-                    </AuthenticationRoute>
                     <AuthenticationRoute path = "/authentication">
                         <Authentication/>
                     </AuthenticationRoute>
@@ -34,6 +31,9 @@ function App() {
                     <GuestRoute path="/signin">
                         <Signin />
                     </GuestRoute>
+                    <ProtectedRoute path = "/addphoto">
+                        <AddPhoto/>
+                    </ProtectedRoute>
                 </Switch>
             </BrowserRouter>
         </>
