@@ -5,6 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGO_URL = process.env.MONGO_URL;
 const router = require('./routes');
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
 mongoose.connect(MONGO_URL, {
@@ -21,6 +22,7 @@ mongoose.connection.on('error', (err) => {
 });
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(cors({
     credentials:true,
     origin: ['http://localhost:3000']
