@@ -19,6 +19,11 @@ class TokenService{
         });
         return verificationToken;
     }
+
+    async checkVerificationToken(token){
+        const JWT_ACCESS_SECRET = process.env.JWT_ACCESS_SECRET;
+        return jwt.verify(token, JWT_ACCESS_SECRET);
+    }
 }
 
 module.exports = new TokenService();
