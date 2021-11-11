@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import style from "./EnterOTP.module.css";
 import Button from "../../../Components/Common/Button/Button";
 import Card from "../../../Components/Common/Card/Card";
-//import OTPInput from "../../../Components/Common/OTPInput/OTPInput";
+// import OTPInput from "../../../Components/Common/OTPInput/OTPInput";
 import Input from "../../../Components/Common/Input/Input";
 import { useHistory } from "react-router-dom";
 import { verifyOTP } from "../../../Reqests/axios";
