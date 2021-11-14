@@ -27,12 +27,16 @@ export default function Phone({ onClick }) {
         try{
             // eslint-disable-next-line no-unused-vars
             const res = await sendOTP({phone: `+91${number}`});
+            if(res.data.error){
+                await setError(res.data.error);
+                return;
+            }
             const data = res.data;
             console.log(data);
             dispatch(setOTP({phone:data.phone, hash:data.hash}));
             onClick();
         }catch(err){
-            setError(true);
+            setError(err);
         }
     }
 
@@ -52,7 +56,7 @@ export default function Phone({ onClick }) {
                     />
                 </div>
                 {
-                    error ? <span className={style.warning}>could not send OTP</span> : null
+                    error ? <span className={style.warning}>{error}</span> : null
                 }
                 <Button icon = {true}  disabled = {!allow} onClick={send} text="Continue" />
                 <p className={style.terms}>

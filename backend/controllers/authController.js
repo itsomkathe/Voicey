@@ -14,10 +14,15 @@ class AuthController {
         const hash = await hashingService.hashOTP(data);
 
         try {
+            let user;
+            user = await userService.findUser({phone: phone});
+            if(user){
+                return res.json({error: "User with given number already exists"});
+            }
             //await otpService.sendAsText(number, otp);
             res.json({ hash: `${hash}#${expireAt}`, phone: phone, otp: otp });
         } catch (err) {
-            return res.status(500).json({ error: err });
+            return res.json({ error: err });
         }
     }
 
@@ -35,17 +40,6 @@ class AuthController {
         const isValid = await otpService.verify(hashedOTP, data);
         if(!isValid){
             return res.json({error: "Incorrect OTP"});
-        }
-
-        let user;
-        try{
-            user = await userService.findUser({phone: phone});
-            if(user){
-                return res.json({error: "User with given number already exists"});
-            }
-        }catch(err){
-            console.log(err);
-            return res.json({error: "Internal server error"});
         }
 
         const verificationToken = tokenService.createVerificationToken({phone: phone});
