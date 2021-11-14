@@ -22,9 +22,8 @@ const userSchema = new Schema({
         type: String,
         required:true
     },
-    isComplete: {
-        type: Boolean,
-        default: false
+    picture:{
+        type: String
     }
 },{
     timestamps : true
