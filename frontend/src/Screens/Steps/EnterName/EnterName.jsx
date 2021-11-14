@@ -19,7 +19,10 @@ export default function EnterName({ onClick }) {
             const res = await createAccount({phone, username, password, name});
             if(res.data.error){
                 setError(res.data.error);
+                return;
             }
+            console.log(res);
+            onClick();
         }catch(err){
             setError("Error, please try again");
         }
