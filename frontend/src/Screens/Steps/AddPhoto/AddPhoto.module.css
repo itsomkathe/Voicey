@@ -39,6 +39,12 @@
     cursor: pointer;
     font-weight: 600;
     opacity: 80%;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .uploadText{
     color: #009fee;
