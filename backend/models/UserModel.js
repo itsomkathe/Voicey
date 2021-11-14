@@ -11,14 +11,16 @@ const userSchema = new Schema({
         required:true
     },
     name:{
-        type: String
+        type: String,
+        required:true
     },
     phone: {
         type: String,
         required:true
     },
     username: {
-        type: String
+        type: String,
+        required:true
     },
     isComplete: {
         type: Boolean,
