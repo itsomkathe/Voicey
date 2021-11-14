@@ -2,12 +2,14 @@ import React, {useState} from "react";
 import EnterUsername from "../Steps/EnterUsername/EnterUsername";
 import EnterPassword from "../Steps/EnterPassword/EnterPassword";
 import EnterName from "../Steps/EnterName/EnterName";
+import Success from "../Steps/Success/Success";
 import style from "./Authentication.module.css";
 
 const Steps = {
     1: EnterUsername,
     2: EnterPassword,
-    3: EnterName
+    3: EnterName,
+    4: Success
 }
 
 export default function Authentication(){
@@ -23,7 +25,7 @@ export default function Authentication(){
         <>
             <div className = {style.cardWrapper}>
                 {
-                    step > 1 ? <button onClick = {stepBack} className = {style.backButton}>
+                    step > 1 && step < 4 ? <button onClick = {stepBack} className = {style.backButton}>
                                     <img src="/Resources/Icons/back.svg" alt = "icon"></img>
                                 </button>: null
                 }
