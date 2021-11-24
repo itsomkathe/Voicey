@@ -2,20 +2,17 @@ const jwt = require('jsonwebtoken');
 class TokenService{
     createToken(payload){
         const JWT_ACCESS_SECRET = process.env.JWT_ACCESS_SECRET;
-        const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET;
         const accessToken = jwt.sign(payload, JWT_ACCESS_SECRET, {
             expiresIn : '1h'
         });
-        const refreshToken = jwt.sign(payload, JWT_REFRESH_SECRET, {
-            expiresIn : '1y'
-        });
-        return {accessToken , refreshToken};
+    
+        return {accessToken};
     }
 
     createVerificationToken(payload){
         const JWT_AUTH_SECRET = process.env.JWT_ACCESS_SECRET;
         const verificationToken = jwt.sign(payload, JWT_AUTH_SECRET, {
-            expiresIn: '1h'
+            expiresIn: '7d'
         });
         return verificationToken;
     }
@@ -23,6 +20,14 @@ class TokenService{
     async checkVerificationToken(token){
         const JWT_ACCESS_SECRET = process.env.JWT_ACCESS_SECRET;
         return jwt.verify(token, JWT_ACCESS_SECRET);
+    }
+
+    createAccessToken(payload){
+        const JWT_AUTH_SECRET = process.env.JWT_ACCESS_SECRET;
+        const accessToken = jwt.sign(payload, JWT_AUTH_SECRET, {
+            expiresIn: '7d'
+        });
+        return accessToken;
     }
 }
 
