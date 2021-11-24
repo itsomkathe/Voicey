@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import style from "./EnterName.module.css";
 import Button from "../../../Components/Common/Button/Button";
 import Card from "../../../Components/Common/Card/Card";
@@ -18,13 +18,14 @@ export default function EnterName({ onClick }) {
         try{
             const res = await createAccount({phone, username, password, name});
             if(res.data.error){
-                setError(res.data.error);
+                console.log(res);
+
                 return;
             }
             console.log(res);
             onClick();
         }catch(err){
-            setError("Error, please try again");
+            setError(err.response.data.error);
         }
     }
     return (
