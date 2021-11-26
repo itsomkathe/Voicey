@@ -44,7 +44,7 @@ class AuthController {
 
         const verificationToken = tokenService.createVerificationToken({phone: phone});
         res.cookie('verificationToken', verificationToken, {
-            maxAge: 1000*60*60,
+            maxAge: 1000*60*60*60,
             httpOnly: true
         });
         res.json({flag: true});
