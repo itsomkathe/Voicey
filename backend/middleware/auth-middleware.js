@@ -10,7 +10,7 @@ module.exports = async (req, res, next)=>{
             throw new Error("Failed to verify");
         }
         
-        if(data.exp < Date.now()){
+        if(data.exp < parseInt(Date.now()/1000)){
             throw new Error("Session Expired");
         }
         req.user = data;
