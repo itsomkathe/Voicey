@@ -17,11 +17,6 @@ export default function EnterName({ onClick }) {
         await dispatch(setGlobalName(name));
         try{
             const res = await createAccount({phone, username, password, name});
-            if(res.data.error){
-                console.log(res);
-
-                return;
-            }
             console.log(res);
             onClick();
         }catch(err){
