@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import style from "./Success.module.css";
 import Button from "../../../Components/Common/Button/Button";
 import Card from "../../../Components/Common/Card/Card";
@@ -17,6 +17,7 @@ export default function Success(){
                 <Button
                     text="Continue"
                     icon = {true}
+                    onClick = {next}
                 ></Button>
             </Card>
         </>
