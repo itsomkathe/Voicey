@@ -90,7 +90,7 @@ export default function AddPhoto() {
                     ></input>
 
                     <span className={style.message}>
-                        you can do this step later, <Link>Skip</Link>
+                        you can do this step later, <Link to="/">Skip</Link>
                     </span>
                 </Card>
             </div>
