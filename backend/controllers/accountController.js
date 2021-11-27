@@ -7,7 +7,7 @@ class AccountController{
         try{
             const existing = await UserService.findUser({$or:[{phone},{username}]});
             if(existing){
-                return res.json({error: "Account already exists"});
+                throw new Error("Account already exists");
             }
             const hashedPassword = await HashingService.hashPassword(password);
             const userData = await UserService.createUser({phone, username, password:hashedPassword, name});
@@ -18,7 +18,7 @@ class AccountController{
             });
             res.json(userData);
         }catch(err){
-            res.json({error: "Internal server error"});
+            res.status(401).json({error: err.message ? err.message: "Internal Server Error"});
         }
     }
 
