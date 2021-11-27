@@ -5,7 +5,8 @@ const initialState = {
     username: null,
     phone: null,
     _id: null,
-    picture: null
+    picture: null,
+    isAuth: false
 };
 
 export const profileSlice = createSlice({
@@ -13,7 +14,12 @@ export const profileSlice = createSlice({
     initialState,
     reducers: {
       setProfile: (state, action)=>{
-        state = {...action.payload};
+        state.name = action.payload.name;
+        state.username = action.payload.username;
+        state.phone = action.payload.phone;
+        state._id = action.payload._id;
+        state.picture = action.payload.picture;
+        state.isAuth = action.payload.isAuth;
       }
     },
 });
