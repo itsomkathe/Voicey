@@ -21,15 +21,13 @@ export default function EnterOTP({ onClick }) {
     });
     const verify = async () => {
         try {
-            const res = await verifyOTP({ phone, hash, otp: OTP });
-            if (res.data.error) {
-                setError(res.data.error);
-            } else {
+            const {data} = await verifyOTP({ phone, hash, otp: OTP });
+            if(data.flag){
                 await dispatch(setVerify(true));
                 hist.push("/authentication");
             }
         } catch (err) {
-            setError("Error Occured");
+            setError(err.response.data.error ? err.response.data.error: "Error Occured");
         }
     };
     return (

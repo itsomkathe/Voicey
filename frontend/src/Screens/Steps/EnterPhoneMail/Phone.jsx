@@ -26,17 +26,12 @@ export default function Phone({ onClick }) {
     async function send(){
         try{
             // eslint-disable-next-line no-unused-vars
-            const res = await sendOTP({phone: `+91${number}`});
-            if(res.data.error){
-                await setError(res.data.error);
-                return;
-            }
-            const data = res.data;
+            const { data } = await sendOTP({phone: `+91${number}`});
             console.log(data);
             dispatch(setOTP({phone:data.phone, hash:data.hash}));
             onClick();
         }catch(err){
-            setError(err);
+            setError(err.response.data.error ? err.response.data.error: "Error Occured");
         }
     }
 
