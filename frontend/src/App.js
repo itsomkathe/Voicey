@@ -8,8 +8,6 @@ import Verification from "./Screens/Verification/Verification";
 import Authentication from "./Screens/Authentication/Authentication";
 import AddPhoto from "./Screens/Steps/AddPhoto/AddPhoto";
 
-const isAuth = false;
-
 function App() {
     return (
         <>
@@ -41,6 +39,7 @@ function App() {
 }
 
 const GuestRoute = ({ children, ...rest }) => {
+    const isAuth = useSelector((state)=>{return state.profile.isAuth});
     return (
         <Route
             {...rest}
@@ -82,6 +81,7 @@ const AuthenticationRoute = ({ children, ...rest }) => {
 };
 
 const ProtectedRoute = ({ children, ...rest }) => {
+    const isAuth = useSelector((state)=>{return state.profile.isAuth});
     return (
         <Route
             {...rest}
