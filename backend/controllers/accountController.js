@@ -24,7 +24,16 @@ class AccountController{
     }
 
     async getProfile(req, res){
-
+        try{
+            const { _id } = req.user;
+            const user = await UserService.findUser({_id});
+            if(!user){
+                throw new Error("No user exists");
+            }
+            return user;
+        }catch(err){
+            res.status(401).json({error: err.message ? err.message : "User error"})
+        }
     }
 }
 
