@@ -12,6 +12,7 @@ class AccountController{
             const hashedPassword = await HashingService.hashPassword(password);
             const userData = await UserService.createUser({phone, username, password:hashedPassword, name});
             const accessToken = await TokenService.createAccessToken({phone, username, _id: userData._id});
+            res.clearCookie('verificationToken');
             res.cookie('accessToken', accessToken, {
                 maxAge: 1000*60*60*24*7,
                 httpOnly: true
