@@ -5,7 +5,7 @@ export default function Navbar(){
     return(
     <>
         <nav className = {`${style.navbar} container`}>
-            <Link>
+            <Link to = '/'>
                 <img id = {`${style.logo}`} src = '/Resources/Icons/logo.png' alt = "logo"></img>
             </Link>
         </nav>
