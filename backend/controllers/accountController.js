@@ -30,7 +30,7 @@ class AccountController{
             if(!user){
                 throw new Error("No user exists");
             }
-            return user;
+            res.json(user);
         }catch(err){
             res.status(401).json({error: err.message ? err.message : "User error"})
         }
