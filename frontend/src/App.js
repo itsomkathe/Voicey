@@ -7,9 +7,13 @@ import Signin from "./Screens/Signin/Signin";
 import Verification from "./Screens/Verification/Verification";
 import Authentication from "./Screens/Authentication/Authentication";
 import AddPhoto from "./Screens/Steps/AddPhoto/AddPhoto";
+import { useRefreshLoader } from "./CustomHooks/useRefreshLoader";
 
 function App() {
-    return (
+    const {loading} = useRefreshLoader();
+    return loading ? (
+        "Loading..."
+    ):(
         <>
             <BrowserRouter>
                 <Navbar />
