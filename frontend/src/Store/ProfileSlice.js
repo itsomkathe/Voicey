@@ -20,9 +20,12 @@ export const profileSlice = createSlice({
         state._id = action.payload._id;
         state.picture = action.payload.picture;
         state.isAuth = action.payload.isAuth;
+      },
+      setIsAuth: (state, action)=>{
+        state.isAuth = action.payload.isAuth;
       }
     },
 });
 
-export const { setProfile } = profileSlice.actions;
+export const { setProfile, setIsAuth } = profileSlice.actions;
 export default profileSlice.reducer;
