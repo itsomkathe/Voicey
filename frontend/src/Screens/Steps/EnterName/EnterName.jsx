@@ -6,7 +6,7 @@ import Input from "../../../Components/Common/Input/Input";
 import { useDispatch, useSelector } from "react-redux";
 import { setGlobalName } from "../../../Store/AuthSlice";
 import { createAccount } from "../../../Reqests/axios";
-import { setProfile } from "../../../Store/ProfileSlice";
+import { setProfile, setIsAuth } from "../../../Store/ProfileSlice";
 
 export default function EnterName({ onClick }) {
     const [name, setName] = useState(null);
@@ -28,15 +28,8 @@ export default function EnterName({ onClick }) {
                 password,
                 name,
             });
-            const profile = {
-                name: data.name,
-                username: data.username,
-                phone: data.phone,
-                _id: data._id,
-                picture: data.picture,
-                isAuth: true
-            };
-            await dispatch(setProfile(profile));
+            await dispatch(setProfile(data));
+            await dispatch(setIsAuth(true));
             onClick();
         } catch (err) {
             setError(err.response.data.error);
