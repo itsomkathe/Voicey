@@ -8,6 +8,10 @@ class UserService{
         const user = UserModel.create(data);
         return user;
     }
+    async findForSignIn(username){
+        const user = await UserModel.findOne({username}).select('name username phone _id picture password');
+        return user;
+    }
 }
 
 module.exports = new UserService();
