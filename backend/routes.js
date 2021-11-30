@@ -13,5 +13,7 @@ router.post('/api/createaccount', AuthMiddleware, AccountController.createAccoun
 
 router.get('/api/refresh', AccessMiddleware, AccountController.getProfile);
 
+router.post('/api/signin', AuthController.signIn);
+
 module.exports = router;
 
