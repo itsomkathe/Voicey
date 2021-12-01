@@ -5,7 +5,7 @@ import Card from "../../Components/Common/Card/Card";
 import Input from "../../Components/Common/Input/Input";
 import { signIn } from "../../Reqests/axios";
 import { setProfile, setIsAuth } from "../../Store/ProfileSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 export default function Signin() {
@@ -15,6 +15,9 @@ export default function Signin() {
     const [error, setError] = useState('');
     const dispatch = useDispatch();
     const hist = useHistory();
+    const { isAuth } = useSelector((state) => {
+        return state.profile;
+    });
 
     useEffect(()=>{
         if(username.length >= 3 && password.length >= 6){
@@ -22,8 +25,13 @@ export default function Signin() {
         }else{
             setAllow(false);
         }
-        
-    },[username, password])
+    },[username, password]);
+
+    useEffect(()=>{
+        if(isAuth){
+            hist.push("/rooms");
+        }
+    }, [isAuth, hist]);
 
     function changeUsername(event) {
         setUsername(event.target.value);
@@ -36,13 +44,12 @@ export default function Signin() {
     async function submit(event) {
         event.preventDefault();
         try{
-            const { data } = await signIn({
+            let { data } = await signIn({
                 username, 
                 password
             });
+            data.isAuth = true;
             dispatch(setProfile(data));
-            dispatch(setIsAuth(true));
-            hist.push("/rooms");
         }catch(err){
             setError(err.response.data.error ? err.response.data.error : "Error Occured" );
         }

@@ -22,14 +22,14 @@ export default function EnterName({ onClick }) {
     async function next() {
         await dispatch(setGlobalName(name));
         try {
-            const { data } = await createAccount({
+            let { data } = await createAccount({
                 phone,
                 username,
                 password,
                 name,
             });
+            data.isAuth = true;
             await dispatch(setProfile(data));
-            await dispatch(setIsAuth(true));
             onClick();
         } catch (err) {
             setError(err.response.data.error);
