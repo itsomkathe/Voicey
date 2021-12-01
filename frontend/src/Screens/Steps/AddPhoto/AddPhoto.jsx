@@ -9,8 +9,9 @@ export default function AddPhoto() {
     const [image, setImage] = useState(null);
     const [didMount, setDidMount] = useState(false);
     const [picID, setPicID] = useState(1);
-
-    const globalName = "Om";
+    const { name } = useSelector((state)=>{
+        return state.profile;
+    })
     const inputRef = useRef();
     useEffect(() => {
         setDidMount(true);
@@ -53,7 +54,7 @@ export default function AddPhoto() {
         <>
             <div className={style.cardWrapper}>
                 <Card
-                    title={`alright ${globalName}, add a photo`}
+                    title={`alright ${name}, add a photo`}
                     icon="camera.png"
                 >
                     <div className={style.picWrapper}>
