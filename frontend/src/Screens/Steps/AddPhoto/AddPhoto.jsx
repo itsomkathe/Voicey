@@ -3,15 +3,28 @@ import style from "./AddPhoto.module.css";
 import Button from "../../../Components/Common/Button/Button";
 import Card from "../../../Components/Common/Card/Card";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-
+import { addPhoto } from "../../../Reqests/axios";
+async function createFile(img) {
+    try {
+        let response = await fetch(img);
+        let data = await response.blob();
+        let metadata = {
+            type: "image",
+        };
+        let file = new File([data], "samplepic.jpg", metadata);
+        return file;
+    } catch (err) {
+        return new Error(err.message);
+    }
+}
 export default function AddPhoto() {
     const [image, setImage] = useState(null);
+    const [error, setError] = useState('Error')
     const [didMount, setDidMount] = useState(false);
     const [picID, setPicID] = useState(1);
-    const { name } = useSelector((state)=>{
+    const { name, picture } = useSelector((state)=>{
         return state.profile;
-    })
+    });
     const inputRef = useRef();
     useEffect(() => {
         setDidMount(true);
@@ -20,6 +33,21 @@ export default function AddPhoto() {
             setDidMount(false);
         };
     }, []);
+
+    useEffect(()=>{
+        if(picture){
+            setImage(picture);
+        }else{
+            createFile(`/Resources/Avatars/${picID}.jpg`).then((file)=>{
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    setImage(reader.result);
+                };
+                reader.readAsDataURL(file);
+            })
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[picID])
 
     const handleUploadClick = (e) => {
         e.preventDefault();
@@ -43,10 +71,14 @@ export default function AddPhoto() {
         }
     };
 
-    const newPicID = () => {
-        if(image){
-            setImage(null);
+    const submit = async ()=>{
+        try{
+            const {data} = await addPhoto({picture: image});
+        }catch(err){
+
         }
+    }
+    const newPicID = () => {
         setPicID((picID % 5) + 1);
     };
 
@@ -58,19 +90,13 @@ export default function AddPhoto() {
                     icon="camera.png"
                 >
                     <div className={style.picWrapper}>
-                        {image ? (
-                            <img src={image} alt="pic"></img>
-                        ) : (
-                            <img
-                                src={`/Resources/Avatars/${picID}.jpg`}
-                                alt="pic"
-                            ></img>
-                        )}
+                        <img src={image} alt="pic"></img>
                     </div>
 
                     <span onClick={newPicID} id={style.generate}>
                         Generate an avatar
                     </span>
+                    {error ? <span className={style.warning}>{error}</span> : null}
 
                     <div className={style.buttonWrapper}>
                         <Button
@@ -79,7 +105,7 @@ export default function AddPhoto() {
                             disabled={false}
                             color="WHITE"
                         />
-                        <Button text="Save Picture" icon={true} />
+                        <Button text="Save Picture" icon={true} onClick = {submit}/>
                     </div>
 
                     <input
@@ -89,10 +115,6 @@ export default function AddPhoto() {
                         accept="image/*"
                         onChange={displayImage}
                     ></input>
-
-                    <span className={style.message}>
-                        you can do this step later, <Link to="/">Skip</Link>
-                    </span>
                 </Card>
             </div>
         </>

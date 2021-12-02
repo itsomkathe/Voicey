@@ -4,7 +4,7 @@ import Button from "../../Components/Common/Button/Button";
 import Card from "../../Components/Common/Card/Card";
 import Input from "../../Components/Common/Input/Input";
 import { signIn } from "../../Reqests/axios";
-import { setProfile, setIsAuth } from "../../Store/ProfileSlice";
+import { setProfile } from "../../Store/ProfileSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
