@@ -19,7 +19,7 @@ async function createFile(img) {
 }
 export default function AddPhoto() {
     const [image, setImage] = useState(null);
-    const [error, setError] = useState('Error')
+    const [error, setError] = useState('')
     const [didMount, setDidMount] = useState(false);
     const [picID, setPicID] = useState(1);
     const { name, picture } = useSelector((state)=>{
@@ -74,8 +74,9 @@ export default function AddPhoto() {
     const submit = async ()=>{
         try{
             const {data} = await addPhoto({picture: image});
+            console.log(data);
         }catch(err){
-
+            setError(err.response.data.message ? err.response.data.message: "Error Occured");
         }
     }
     const newPicID = () => {
