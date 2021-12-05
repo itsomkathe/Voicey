@@ -28,6 +28,7 @@ app.use(cors({
     origin: ['http://localhost:3000']
 }));
 app.use(express.json({limit : '10mb'}));
+app.use('/storage', express.static('storage'));
 app.use(router);
 app.get('/',(req,res,next)=>{
     res.send('Welcome to voicey');

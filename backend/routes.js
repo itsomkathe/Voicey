@@ -15,5 +15,7 @@ router.get('/api/refresh', AccessMiddleware, AccountController.getProfile);
 
 router.post('/api/signin', AuthController.signIn);
 
+router.post('/api/addphoto', AccessMiddleware, AccountController.addPhoto);
+
 module.exports = router;
 
