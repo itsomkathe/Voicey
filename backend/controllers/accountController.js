@@ -1,6 +1,9 @@
 const UserService = require('../services/userService');
 const HashingService = require('../services/hashingService');
 const TokenService = require('../services/tokenService');
+const path = require('path');
+const jimp = require('jimp');
+
 class AccountController{
     async createAccount(req, res){
         const {phone, username, password, name} = req.body;
@@ -33,6 +36,27 @@ class AccountController{
             res.json(user);
         }catch(err){
             res.status(401).json({error: err.message ? err.message : "User error"})
+        }
+    }
+
+    async addPhoto(req, res){
+        const { _id } = req.user;
+        const { picture } = req.body;
+        const imagePath = `${Date.now()}-${Math.round(
+            Math.random()*1e9
+        )}.png`;
+        const buffer = Buffer.from(
+            picture.replace(/^data:image\/png;base64,/, ''),
+            'base64'
+        );
+        try{
+            
+            const jimpRes = await jimp.read(buffer);
+            jimpRes.write(path.resolve(__dirname, `../storage/${imagePath}`));
+            const user = await UserService.addPicture(_id, `/storage/${imagePath}`);
+            res.json({picture: user.picture});
+        }catch(err){
+            res.status(401).json({error: err.message ? err.message : "Internal Server Error"});
         }
     }
 }
