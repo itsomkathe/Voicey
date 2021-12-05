@@ -18,7 +18,7 @@ export const profileSlice = createSlice({
         state.username = action.payload.username;
         state.phone = action.payload.phone;
         state._id = action.payload._id;
-        state.picture = action.payload.picture;
+        state.picture = action.payload.picture ? `${process.env.REACT_APP_BACKEND_URL}${action.payload.picture}`: null;
         state.isAuth = action.payload.isAuth;
       },
       setIsAuth: (state, action)=>{

@@ -6,7 +6,7 @@ import Input from "../../../Components/Common/Input/Input";
 import { useDispatch, useSelector } from "react-redux";
 import { setGlobalName } from "../../../Store/AuthSlice";
 import { createAccount } from "../../../Reqests/axios";
-import { setProfile, setIsAuth } from "../../../Store/ProfileSlice";
+import { setProfile } from "../../../Store/ProfileSlice";
 
 export default function EnterName({ onClick }) {
     const [name, setName] = useState(null);
