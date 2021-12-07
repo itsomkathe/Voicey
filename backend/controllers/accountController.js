@@ -3,6 +3,7 @@ const HashingService = require('../services/hashingService');
 const TokenService = require('../services/tokenService');
 const path = require('path');
 const jimp = require('jimp');
+const fs = require('fs');
 
 class AccountController{
     async createAccount(req, res){
@@ -46,13 +47,13 @@ class AccountController{
             Math.random()*1e9
         )}.png`;
         const buffer = Buffer.from(
-            picture.replace(/^data:image\/png;base64,/, ''),
+            picture.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''),
             'base64'
         );
+        const base64Data = picture.replace(/^data:([A-Za-z-+/]+);base64,/, '');
         try{
-            
-            const jimpRes = await jimp.read(buffer);
-            jimpRes.write(path.resolve(__dirname, `../storage/${imagePath}`));
+            console.log(base64Data)
+            fs.writeFileSync(path.resolve(__dirname, `../storage/${imagePath}`), base64Data,  {encoding: 'base64'});
             const user = await UserService.addPicture(_id, `/storage/${imagePath}`);
             res.json({picture: user.picture});
         }catch(err){

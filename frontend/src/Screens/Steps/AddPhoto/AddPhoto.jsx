@@ -25,9 +25,25 @@ export default function AddPhoto() {
     const { name, picture } = useSelector((state)=>{
         return state.profile;
     });
+    const firstRender = useRef(true);
     const inputRef = useRef();
+
+    useEffect(()=>{
+        if(!firstRender.current){
+            createFile(`/Resources/Avatars/${picID}.jpg`).then((file)=>{
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    setImage(reader.result);
+                };
+                reader.readAsDataURL(file);
+            })
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[picID])
+
     useEffect(() => {
         setDidMount(true);
+        firstRender.current = false;
         document.title = "Profile Picture";
         return () => {
             setDidMount(false);
@@ -47,7 +63,7 @@ export default function AddPhoto() {
             })
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[picID])
+    },[])
 
     const handleUploadClick = (e) => {
         e.preventDefault();
@@ -76,7 +92,7 @@ export default function AddPhoto() {
             const {data} = await addPhoto({picture: image});
             console.log(data);
         }catch(err){
-            setError(err.response.data.message ? err.response.data.message: "Error Occured");
+            setError(err.response? err.response.data.error: "Error Occured");
         }
     }
     const newPicID = () => {
