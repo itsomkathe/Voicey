@@ -3,4 +3,21 @@
 }
 .navbar{
     padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.picture{
+    height: 3rem;
+    width: 3rem;
+    object-fit: cover;
+    cursor: pointer;
+    border: 0.15rem solid #00a5f8;    
+    border-radius: 1rem;
+    margin-left: 20px;
+}
+
+.navRight{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
