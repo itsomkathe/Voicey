@@ -8,6 +8,7 @@ import Verification from "./Screens/Verification/Verification";
 import Authentication from "./Screens/Authentication/Authentication";
 import AddPhoto from "./Screens/Steps/AddPhoto/AddPhoto";
 import { useRefreshLoader } from "./CustomHooks/useRefreshLoader";
+import Rooms from "./Screens/Rooms/Rooms";
 
 function App() {
     const {loading} = useRefreshLoader();
@@ -28,7 +29,7 @@ function App() {
                         <Authentication/>
                     </AuthenticationRoute>
                     <ProtectedRoute path = "/rooms">
-
+                        <Rooms/>
                     </ProtectedRoute>
                     <GuestRoute path="/signin">
                         <Signin />
