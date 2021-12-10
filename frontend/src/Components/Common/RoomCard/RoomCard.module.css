@@ -1,0 +1,72 @@
+.card {
+    padding: 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    box-shadow: 
+    8px 8px 16px 0 rgba(0, 0, 0, 0.25),
+    -4px -4px 12px 0 rgba(255, 255, 255, 0.3);
+}
+
+.speakers {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 20px 0;
+}
+
+.avatars img {
+    width: 40px;
+    height: 40px;
+    border-radius: 1rem;
+    object-fit: cover;
+    border: 2px solid #00a5f8;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.avatars img:last-child {
+    top: 20px;
+    left: 20px;
+}
+
+.names {
+    margin-left: 100px;
+}
+
+.names span {
+    padding-bottom: 5px;
+    display: inline-block;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.peopleCount {
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.peopleCount span {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.singleSpeaker .avatars img {
+    position: initial;
+}
+
+.singleSpeaker .names {
+    margin-left: 20px;
+}
+
+.nameWrapper img{
+    height: 0.6rem;
+    width: 0.6rem;
+}
+
+.peopleCount img{
+    height: 1.2rem;
+    width: 1.2rem;
+}
