@@ -27,6 +27,7 @@
 .button img {
     height: 1.5rem;
     width: 1.5rem;
+    background-color: transparent;
 }
 
 #buttonDisabled {
@@ -81,3 +82,4 @@
     margin: auto;
     height: 2.3rem;
 }
+
