@@ -9,6 +9,28 @@ class RoomController{
             res.status(400).json({error: err.message ? err.message : "Internal Server Error"});
         }
     }
+
+    async createRoom(req, res){
+        const { topic, roomType } = req.body;
+        
+        if (!topic || !roomType) {
+            return res
+                .status(400)
+                .json({ error: 'All fields are required!' });
+        }
+        try{
+            const room = await RoomService.createRoom({
+                topic,
+                roomType,
+                ownerId: req.user._id,
+            });
+    
+            res.json(room);
+        }catch(err){
+            console.log(err);
+            res.status(400).json({error: err.message ? err.message : "Internal Server Error"});
+        }
+    }
 }
 
 module.exports = new RoomController();
