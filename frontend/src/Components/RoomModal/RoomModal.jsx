@@ -3,21 +3,34 @@ import styles from './RoomModal.module.css';
 import { useHistory } from 'react-router-dom';
 import Input from '../Common/Input/Input';
 import Button from '../Common/Button/Button';
+import { createRoom } from '../../Reqests/axios';
+
 const RoomModal = ({ onClose }) => {
     const history = useHistory();
 
     const [roomType, setRoomType] = useState('open');
     const [error, setError] = useState('');
     const [topic, setTopic] = useState('');
-
-    async function createRoom() {
+    const [allow, setAllow] = useState(false);
+    async function create() {
         try {
             if (!topic) return;
+            const { data } = await createRoom({ topic, roomType });
+            history.push(`/room/${data._id}`);
         } catch (err) {
-            console.log(err.message);
+            setError(err.response.data.error ? err.response.data.error : "Error Occured" );
         }
     }
 
+    function inputChange(event){
+        setTopic(event.target.value);
+        if(event.target.value){
+            setAllow(true);
+        }else{
+            setAllow(false);
+        }
+    }
+    
     return (
         <div className={styles.modalMask}>
             <div className={styles.modalBody}>
@@ -28,7 +41,10 @@ const RoomModal = ({ onClose }) => {
                     <h3 className={styles.heading}>
                         enter the topic to be disscussed
                     </h3>
-                    <Input></Input>
+                    <Input
+                        onchange={inputChange}
+                        value={topic}
+                    ></Input>
                     <h2 className={styles.subHeading}>room types</h2>
                     <div className={styles.roomTypes}>
                         <div
@@ -68,6 +84,8 @@ const RoomModal = ({ onClose }) => {
                     <Button
                         text= "Create"
                         icon={true}
+                        onClick={create}
+                        disabled={!allow}
                     />
                 </div>
             </div>
