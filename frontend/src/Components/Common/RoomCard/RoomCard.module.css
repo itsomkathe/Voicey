@@ -54,6 +54,7 @@
 }
 
 .singleSpeaker .avatars img {
+    object-fit: cover;
     position: initial;
 }
 
