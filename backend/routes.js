@@ -20,5 +20,7 @@ router.post('/api/addphoto', AccessMiddleware, AccountController.addPhoto);
 
 router.get('/api/getrooms', RoomController.getRooms);
 
+router.post('/api/createroom', AccessMiddleware, RoomController.createRoom);
+
 module.exports = router;
 
