@@ -8,9 +8,26 @@ class RoomService{
             .exec();
             return rooms;
         }catch(err){
+            console.log(err);
+            return new Error(err.message);
+        }
+    }
+
+    async createRoom(payload){
+        const { topic, roomType, ownerId } = payload;
+        try{
+            const room = await RoomModel.create({
+                topic,
+                roomType,
+                ownerId,
+                speakers: [ownerId],
+            });
+            return room;
+        }catch(err){
             console.log(err)
             return new Error(err.message);
         }
+        
     }
 }
 
