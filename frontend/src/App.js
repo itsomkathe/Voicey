@@ -9,6 +9,7 @@ import Authentication from "./Screens/Authentication/Authentication";
 import AddPhoto from "./Screens/Steps/AddPhoto/AddPhoto";
 import { useRefreshLoader } from "./CustomHooks/useRefreshLoader";
 import Rooms from "./Screens/Rooms/Rooms";
+import SingleRoom from "./Screens/Single Room/SingleRoom";
 
 function App() {
     const {loading} = useRefreshLoader();
@@ -30,6 +31,9 @@ function App() {
                     </AuthenticationRoute>
                     <ProtectedRoute path = "/rooms">
                         <Rooms/>
+                    </ProtectedRoute>
+                    <ProtectedRoute path = "/room/:roomID">
+                        <SingleRoom/>
                     </ProtectedRoute>
                     <GuestRoute path="/signin">
                         <Signin />
