@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
+import Input from "../../Components/Common/Input/Input";
 import RoomCard from "../../Components/Common/RoomCard/RoomCard";
 import RoomModal from "../../Components/RoomModal/RoomModal";
 import { getRooms } from "../../Reqests/axios";
 import style from "./Rooms.module.css";
-
 // const rooms = [
 //     {
 //         id: 1,
@@ -78,7 +78,6 @@ import style from "./Rooms.module.css";
 const Rooms = () => {
     const [showModal, setShowModal] = useState(false);
     const [rooms, setRooms] = useState([]);
-
     useEffect(()=>{
         const fetchRooms = async ()=>{
             const {data} = await getRooms();
@@ -104,17 +103,9 @@ const Rooms = () => {
                             <span className={style.heading}>
                                 all voice rooms
                             </span>
-                            <div className={style.searchBox}>
-                                <img
-                                    src="/Resources/Icons/search.svg"
-                                    className={style.searchicon}
-                                    alt="search"
+                                <Input
+
                                 />
-                                <input
-                                    type="text"
-                                    className={style.searchInput}
-                                />
-                            </div>
                         </div>
                         <div className={style.right}>
                             <button onClick={openModal} className={style.startRoomButton}>
