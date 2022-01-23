@@ -19,6 +19,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.9",
     "otp-generator": "^2.0.1",
+    "socket.io": "^4.4.1",
     "twilio": "^3.69.0"
   },
   "devDependencies": {
