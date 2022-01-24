@@ -7,6 +7,16 @@ const MONGO_URL = process.env.MONGO_URL;
 const router = require('./routes');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const ACTIONS = require('./actions.js')
+
+const server = require('http').createServer(app);
+
+const io = require('socket.io')(server, {
+    cors:{
+        origin: 'http://localhost:3000/',
+        methods: ['GET', 'POST']
+    }
+})
 
 mongoose.connect(MONGO_URL, {
     useNewUrlParser: true,
@@ -34,6 +44,22 @@ app.get('/',(req,res,next)=>{
     res.send('Welcome to voicey');
 })
 
-app.listen(PORT, ()=>{
+const socketUserMapping = {
+
+}
+
+io.on('connection', (socket)=>{
+    socket.on(ACTIONS.JOIN, ({roomID, user})=>{
+        socketUserMapping[socket.id] = user;
+        const clients = io.sockets.adapter.rooms.get(roomID) || [];
+        clients.forEach((clientSocketID)=>{
+            io.to(clientSocketID).emit(ACTIONS.ADD_PEER, {})
+        });
+        socket.emit(ACTIONS.ADD_PEER);
+        socket.join(roomID)
+    });
+})
+
+server.listen(PORT, ()=>{
     console.log(`listening on port ${PORT}`);
 });
