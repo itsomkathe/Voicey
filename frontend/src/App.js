@@ -32,7 +32,7 @@ function App() {
                     <ProtectedRoute path = "/rooms">
                         <Rooms/>
                     </ProtectedRoute>
-                    <ProtectedRoute path = "/room/:roomID">
+                    <ProtectedRoute path = "/room/:roomId">
                         <SingleRoom/>
                     </ProtectedRoute>
                     <GuestRoute path="/signin">
@@ -85,6 +85,7 @@ const AuthenticationRoute = ({ children, ...rest }) => {
                     children
                 );
             }}
+            exact
         ></Route>
     );
 };
@@ -106,6 +107,7 @@ const ProtectedRoute = ({ children, ...rest }) => {
                     children
                 );
             }}
+            exact
         ></Route>
     );
 };
