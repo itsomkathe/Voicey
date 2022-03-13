@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useMedia } from "../../CustomHooks/useMedia";
-import style from "./SingleRoom.module.css";
+import useMedia from "../../CustomHooks/useMedia";
+//import style from "./SingleRoom.module.css";
 
 export default function SingleRoom() {
-    const { roomID } = useParams();
-    const user = useSelector((state)=>state.profile);
-    const [clients, provideRef] = useMedia(roomID, user);
+    const { roomId } = useParams();
+    const user = useSelector((state) => state.profile);
+    const { clients, provideRef } = useMedia(roomId, user);
 
-    
     return (
         <>
-            {clients.map((client) => {
-                return (
-                    <div key={client._id}>
-                        <audio 
-                            ref = {(instance)=>{
-                                provideRef(instance, client._id)
-                            }}
-                            controls 
-                            autoPlay></audio>
-                        <h4>{client.name}</h4>
-                    </div>
-                );
-            })}
+            <div>
+                {clients.map((client) => {
+                    return (
+                        <div key={client.id}>
+                            <audio
+                                ref={(instance) => provideRef(instance, client.id)}
+                                controls={true}
+                                autoPlay={true}
+                            ></audio>
+                            <h5>{client.name}</h5>
+                        </div>
+                    );
+                })}
+            </div>
         </>
     );
 }
