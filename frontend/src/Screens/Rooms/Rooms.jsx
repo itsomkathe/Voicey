@@ -77,6 +77,7 @@ import style from "./Rooms.module.css";
 
 const Rooms = () => {
     const [showModal, setShowModal] = useState(false);
+    const [roomInput, setRoomInput] = useState('');
     const [rooms, setRooms] = useState([]);
     useEffect(()=>{
         const fetchRooms = async ()=>{
@@ -104,7 +105,8 @@ const Rooms = () => {
                                 all voice rooms
                             </span>
                                 <Input
-
+                                    value={roomInput}
+                                    onchange = {setRoomInput}
                                 />
                         </div>
                         <div className={style.right}>
