@@ -174,11 +174,6 @@ export default function useMedia(roomId, user) {
 
     useEffect(()=>{
         const handleRemovePeer = async ({peerId, userId})=>{
-            console.log(connections.current);
-            console.log(audioElements.current);
-            console.log(peerId)
-            console.log(userId)
-            console.log(clients)
             if(connections.current[peerId]){
                 connections.current[peerId].close();
             }
