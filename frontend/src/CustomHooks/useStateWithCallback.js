@@ -1,26 +1,23 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState, useEffect } from "react";
 
-export function useStateWithCallback(initialState) {
-    const [state, setState] = useState(initialState);
-    const callbackRef = useRef();
+export default function useStateWithCallback(initialState){
+    const[state, setState] = useState(initialState);
+    const cbRef = useRef();
 
-    const updateState = useCallback(
-        (newState, callback) => {
-            callbackRef.current = callback;
-            setState((prev) => {
-                return typeof newState === "function"
-                    ? newState(prev)
-                    : newState;
-            });
-        }, []
-    );
-    
+    //Will be imported as setState
+    const updateState = useCallback((newState, cb)=>{
+        cbRef.current = cb;
+        setState((prev)=>{
+            return typeof newState === 'function' ? newState(prev) : newState;
+        })
+    }, []);
+
     useEffect(()=>{
-        if(callbackRef.current){
-            callbackRef.current(state)
-            callbackRef.current = null;
+        if(typeof cbRef.current === 'function'){
+            cbRef.current(state);
         }
+        cbRef.current = null;
     }, [state])
 
-    return[state, updateState];
+    return [state, updateState];
 }
