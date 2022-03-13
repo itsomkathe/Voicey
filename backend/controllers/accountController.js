@@ -52,7 +52,6 @@ class AccountController{
         );
         const base64Data = picture.replace(/^data:([A-Za-z-+/]+);base64,/, '');
         try{
-            console.log(base64Data)
             fs.writeFileSync(path.resolve(__dirname, `../storage/${imagePath}`), base64Data,  {encoding: 'base64'});
             const user = await UserService.addPicture(_id, `/storage/${imagePath}`);
             res.json({picture: user.picture});
