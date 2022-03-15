@@ -6,7 +6,10 @@ export default function Button({ text, onClick, disabled, color, icon, type }) {
         id = style.buttonGreen;
     }else if(color === "WHITE"){
         id = style.buttonWhite;
+    }else if(color === "RED"){
+        id = style.buttonRed;
     }
+    
     if(disabled){
         id = style.buttonDisabled;
     }
@@ -20,7 +23,7 @@ export default function Button({ text, onClick, disabled, color, icon, type }) {
                 type = {type ? type : null}
             >
                 <span>{text}</span>
-                {icon ? <img src="/Resources/Icons/right-arrow.svg" alt="icon"></img> : null}
+                {icon ? <img src={`/Resources/Icons/${icon}`} alt="icon"></img> : null}
             </button>
         </>
     );
