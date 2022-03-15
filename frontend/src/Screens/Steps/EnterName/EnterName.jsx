@@ -54,7 +54,7 @@ export default function EnterName({ onClick }) {
                     onClick={next}
                     text="Continue"
                     value={name}
-                    icon={true}
+                    icon='right-arrow.svg'
                 ></Button>
             </Card>
         </>

@@ -122,7 +122,7 @@ export default function AddPhoto() {
                             disabled={false}
                             color="WHITE"
                         />
-                        <Button text="Save Picture" icon={true} onClick = {submit}/>
+                        <Button text="Save Picture" icon='right-arrow.svg' onClick = {submit}/>
                     </div>
 
                     <input

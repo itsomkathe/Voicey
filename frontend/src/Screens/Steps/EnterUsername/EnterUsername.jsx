@@ -56,7 +56,7 @@ export default function EnterUsername({ onClick }) {
                     username should consist at least 3 characters
                 </span>
                 <Button
-                    icon={true}
+                    icon='right-arrow.svg'
                     disabled={!allow}
                     onClick={next}
                     text="Continue"

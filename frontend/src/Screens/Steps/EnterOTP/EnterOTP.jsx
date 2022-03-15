@@ -52,7 +52,7 @@ export default function EnterOTP({ onClick }) {
                         enter the code that we have just sent you
                     </span>
                     <Button
-                        icon={true}
+                        icon='right-arrow.svg'
                         onClick={verify}
                         text="Continue"
                     ></Button>

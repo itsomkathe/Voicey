@@ -55,7 +55,7 @@ export default function EnterPassword({ onClick }) {
                     password should consist at least 6 characters
                 </span>
                 <Button
-                    icon={true}
+                    icon='right-arrow.svg'
                     disabled={!allow}
                     onClick={next}
                     text="Continue"

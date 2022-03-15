@@ -16,7 +16,7 @@ export default function Success(){
                 <img src = "/Resources/Icons/popper.png" alt="icon" className = {style.cardPic}></img>
                 <Button
                     text="Continue"
-                    icon = {true}
+                    icon='right-arrow.svg'
                     onClick = {next}
                 ></Button>
             </Card>
