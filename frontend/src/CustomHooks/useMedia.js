@@ -88,7 +88,6 @@ export default function useMedia(roomId, user) {
                 streams: [remoteStream]
             })=>{
                 addNewClient(remoteUser, ()=>{
-                    console.log(remoteUser)
                     if(audioElements.current[remoteUser.id]){
                         audioElements.current[remoteUser.id].srcObject = remoteStream;
                     }else{
