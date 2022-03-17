@@ -22,5 +22,7 @@ router.get('/api/getrooms', RoomController.getRooms);
 
 router.post('/api/createroom', AccessMiddleware, RoomController.createRoom);
 
+router.get('/api/rooms/:roomId', AccessMiddleware, RoomController.getRoom);
+
 module.exports = router;
 
