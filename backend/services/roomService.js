@@ -27,7 +27,16 @@ class RoomService{
             console.log(err)
             return new Error(err.message);
         }
-        
+    }
+
+    async getRoom(roomId){
+        try{
+            const rooms = await RoomModel.findById(roomId);
+            return rooms;
+        }catch(err){
+            console.log(err);
+            return new Error(err.message);
+        }
     }
 }
 

@@ -31,6 +31,16 @@ class RoomController{
             res.status(400).json({error: err.message ? err.message : "Internal Server Error"});
         }
     }
+
+    async getRoom(req, res){
+        try{
+            const room = await RoomService.getRoom(req.params.roomId);
+            res.json(room);
+        }catch(err){
+            console.log(err);
+            res.status(400).json({error: err.message ? err.message : "Internal Server Error"});
+        }
+    }
 }
 
 module.exports = new RoomController();
