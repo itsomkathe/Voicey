@@ -81,7 +81,7 @@ export default function Signin() {
                                 disabled={!allow}
                                 type="submit"
                                 text="Sign In"
-                                icon = {true}
+                                icon = "right-arrow.svg"
                             />
                         </div>
                     </form>
