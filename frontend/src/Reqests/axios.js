@@ -16,4 +16,5 @@ export const signIn = (data)=> api.post('/api/signin', data);
 export const addPhoto = (data)=> api.post('/api/addphoto', data);
 export const getRooms = ()=> api.get('/api/getrooms');
 export const createRoom = (data)=> api.post('/api/createroom', data);
+export const getRoom = (roomId)=> api.get(`/api/rooms/${roomId}`);
 export default api;
