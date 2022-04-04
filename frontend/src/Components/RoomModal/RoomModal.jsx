@@ -83,7 +83,7 @@ const RoomModal = ({ onClose }) => {
                     <h2>start a room</h2>
                     <Button
                         text= "Create"
-                        icon={true}
+                        icon='right-arrow.svg'
                         onClick={create}
                         disabled={!allow}
                     />
