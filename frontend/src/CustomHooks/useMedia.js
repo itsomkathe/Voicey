@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { socketInit } from "../Socket";
 import useStateWithCallback from "./useStateWithCallback";
 import { ACTIONS } from "../Socket/actions";
@@ -12,6 +12,7 @@ export default function useMedia(roomId, user) {
     const connections = useRef({});
     const localMediaStream = useRef(null);
     const socket = useRef(null);
+    const clientsRef = useRef([]);
 
     useEffect(() => {
         socket.current = socketInit();
@@ -47,7 +48,7 @@ export default function useMedia(roomId, user) {
         };
 
         startCapture().then(() => {
-            addNewClient(user, () => {
+            addNewClient({...user, muted: true}, () => {
                 const localElement = audioElements.current[user.id];
                 if (localElement) {
                     localElement.volume = 0;
@@ -64,6 +65,7 @@ export default function useMedia(roomId, user) {
 
             socket.current.emit(ACTIONS.LEAVE, {roomId});
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(()=>{
@@ -87,7 +89,7 @@ export default function useMedia(roomId, user) {
             connections.current[peerId].ontrack = ({
                 streams: [remoteStream]
             })=>{
-                addNewClient(remoteUser, ()=>{
+                addNewClient({...remoteUser, muted: true}, ()=>{
                     if(audioElements.current[remoteUser.id]){
                         audioElements.current[remoteUser.id].srcObject = remoteStream;
                     }else{
@@ -126,6 +128,7 @@ export default function useMedia(roomId, user) {
         return ()=>{
             socket.current.off(ACTIONS.ADD_PEER, handleNewPeer);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 
@@ -186,11 +189,64 @@ export default function useMedia(roomId, user) {
         return ()=>{
             socket.current.off(ACTIONS.REMOVE_PEER);
         }
-    }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    //<---------- HANDLE MUTE ---------->
+
+    const handleMute = (isMute, userId)=>{
+        let setteled = false;
+        let interval = setInterval(()=>{
+            if(localMediaStream.current){
+                localMediaStream.current.getTracks()[0].enabled = !isMute;
+                if(isMute){
+                    socket.current.emit(ACTIONS.MUTE, {
+                        roomId,
+                        userId
+                    });
+                }else{
+                    socket.current.emit(ACTIONS.UN_MUTE, {
+                        roomId,
+                        userId
+                    });
+                }
+                setteled = true;
+            }
+            if(setteled){
+                clearInterval(interval);
+            }
+        }, 200);
+    }
+
+    //<---------- LISTEN MUTE UNMUTE ---------->
+    useEffect(()=>{
+        clientsRef.current = clients;
+    }, [clients])
+    useEffect(()=>{
+        socket.current.on(ACTIONS.MUTE, ({peerId, userId})=>{
+            setMute(true, userId);
+        });
+        socket.current.on(ACTIONS.UN_MUTE, ({peerId, userId})=>{
+            setMute(false, userId);
+        });
+
+        const setMute = (mute, userId)=>{
+            const clientIdx = clientsRef.current.map((client)=>client.id).indexOf(userId);
+            const connectedClients = JSON.parse(
+                JSON.stringify(clientsRef.current)
+            );
+            if(clientIdx > -1){
+                connectedClients[clientIdx].muted = mute;
+                setClients(connectedClients);
+            }
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return {
         clients,
         setClients,
         provideRef,
+        handleMute
     };
 }
