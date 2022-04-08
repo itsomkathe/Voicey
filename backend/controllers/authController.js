@@ -20,7 +20,7 @@ class AuthController {
             if (user) {
                 throw new Error("User with given number already exists");
             }
-            //await otpService.sendAsText(number, otp);
+            //await otpService.sendAsText(phone, otp);
             res.json({ hash: `${hash}#${expireAt}`, phone: phone, otp: otp });
         } catch (err) {
             return res
