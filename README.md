@@ -28,5 +28,12 @@ Start the React modules
 <br/><br/>
 <pre><code>$ npm start</code></pre>
 </div>
+<br/>
+<div align="left">
+<h3>Screenshots</h3>
+<img src = "./static/1.png"/>
+<img src = "./static/2.png"/>
+<img src = "./static/3.png"/>
+</div>
 
 
